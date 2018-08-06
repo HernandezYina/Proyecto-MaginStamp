@@ -217,3 +217,5 @@ SELECT MonthName(fecha) AS Mes, COUNT(*) AS cotizaciones, Year(fecha) AS anio FR
 GROUP BY MONTH(fecha) ORDER BY fecha ASC;
 
 -- DISPARADORES EN PHP MYADMIN
+
+-- primer cambio prueba //////////////// --
