@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
+        <link href="../resourses/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/png" href="../resourses/img/favicon.png"/>
+
+        <link href="../resourses/css/light-bootstrap-dashboard.css" rel="stylesheet" type="text/css"/>
+        <link href="../resourses/css/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../resourses/css/animate.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Roboto" rel="stylesheet"/>
+        <title>#{dashES.menu8}</title>
+    </h:head>
+    <h:body style="background-image: url(../resourses/img/header.png); background-size: cover; background-attachment: fixed">
+        <f:view locale="#{lenguajeControlador.languageSelected}">
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-md" style="height: 50px">
+                <div class="container">
+                    <i class="fas fa-registered mx-2 text-muted wow bounce"></i>
+                    <a class="navbar-brand" href="#">#{dashES.registro}</a>
+                    <button href="#" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span><i class="fas fa-bars"></i></span> 
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../index.xhtml" data-toggle="tooltip" data-placement="bottom" title="volver a la pagina principal" style="margin:20px;">
+                                    <span class="no-icon"><i class="fas fa-sign-out-alt text-muted wow bounce"></i>#{dashES.nav1}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <!-- contenido -->
+            <div class="content main main-raised mt-4 mb-5 col-md-6 col-sm mx-auto wow bounceIn">
+                <div class="container">
+                    <div class="section">
+                        <!-- amor pega los formularios y tablas aqui... -->
+                        <f:view>
+                            <div class="row">
+                                <h:form pt:class="p-3 needs-validation" pt:novalidate="" pt:id="registro">
+                                    <div class="row">
+                                        <div class="form-group col-sm col-md-8">
+                                            <h3 class="text-xs-center font-weight-bold">#{dashES.tablaregistro}"</h3>
+                                        </div>
+                                        <div class="form-group col-sm">
+                                            <img class="img-fluid pull-right wow tada" data-wow-iteration="infinite" data-wow-duration="3s"
+                                                 src="../resourses/img/estampar.svg" style="width:5rem"></img>
+                                        </div>
+                                    </div>
+                                    <hr></hr>
+                                    <div class="row">
+                                        <div class="form-group col-sm">
+                                            <label for="nombres" class="control-label">#{dashES.tablaregistro1}</label>
+                                            <h:inputText class="form-control" id="nombres" value="#{usuarioControlador.usuario.nombres}" pt:required=""
+                                                         pt:placeholder="#{dashES.valid}" pt:type="text" pt:minlength="5" pt:maxlength="43"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro2}" for="apellidos" />
+                                            <h:inputText class="form-control" id="apellidos" value="#{usuarioControlador.usuario.apellidos}" pt:required=""
+                                                         pt:placeholder="#{dashES.valid1}" pt:type="text" pt:minlength="5" pt:maxlength="43"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid1}
+                                            </div>
+                                        </div>
+                                        <!--  // amor, deja la fecha asi como esta aca-->
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro3}" for="fechaNacimiento"/>
+                                            <h:inputText class="form-control" id="fechaNacimiento" value="#{usuarioControlador.usuario.fechaNacimiento}" 
+                                                         pt:placeholder="dd/mm/aaaa" pt:pattern="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/\d{4}"
+                                                         pt:data-toggle="tooltip" pt:data-placement="right" pt:title="formato dd/mm/aaaa">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </h:inputText>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid2} 
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-sm"></div>
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro5}" for="idTipoDocumento" />
+                                            <h:selectOneMenu class="form-control" id="idTipoDocumento" value="#{usuarioControlador.tipodocumento.idTipoDocumento}" pt:required="">
+                                                <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItem itemLabel="#{dashES.valid11}" itemValue="0"></f:selectItem>
+                                                <f:selectItems value="#{tipodocumentoControlador.listaTipodocumento}" var="tipodocumento" itemValue="#{tipodocumento.idTipoDocumento}" itemLabel="#{tipodocumento.sigla}"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro0}" for="documento" />
+                                            <h:inputText class="form-control" id="documento" value="#{usuarioControlador.usuario.documento}" pt:required=""
+                                                         pt:placeholder="#{dashES.valid3}"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid3}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro6}" for="direccion" />
+                                            <h:inputText class="form-control" id="direccion" value="#{usuarioControlador.usuario.direccion}"  pt:required=""
+                                                         pt:placeholder="#{dashES.valid9}" pt:type="text"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid4}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro7}" for="cel" />
+                                            <h:inputText class="form-control" id="cel" value="#{usuarioControlador.usuario.cel}" pt:required=""
+                                                         pt:placeholder="#{dashES.valid3}" pt:type="number"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid5}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro8}" for="telefonoFijo" />
+                                            <h:inputText class="form-control" id="telefonoFijo" value="#{usuarioControlador.usuario.telefonoFijo}" pt:required=""
+                                                         pt:placeholder="#{dashES.valid4}" pt:type="number"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid5}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro9}" for="email" />
+                                            <h:inputText class="form-control" id="email" value="#{usuarioControlador.usuario.email}" pt:required=""
+                                                         pt:placeholder="#{dashES.valid5}" pt:type="email" pt:pattern="[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid6}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm">
+                                            <h:outputLabel value="#{dashES.tablaregistro10}" for="clave" />
+                                            <h:inputSecret class="form-control" id="clave" value="#{usuarioControlador.usuario.clave}" pt:required=""
+                                                           pt:placeholder="#{dashES.valid7}" pt:type="password" pt:minlength="7" pt:maxlength="15"/>
+                                            <div class="invalid-feedback">
+                                                #{dashES.valid6}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container mx-auto row mt-5">
+                                        <div class="col-sm">
+                                        <h:commandButton class="btn btn-info wow pulse" pt:data-wow-iteration="infinite" value="#{dashES.tablaregistro11}" action="#{usuarioControlador.create()}"
+                                                         pt:data-toggle="tooltip" pt:data-placement="bottom" pt:title="#{dashES.tablaregistro11}"></h:commandButton>                          
+                                        </div>
+                                        <div class="col-sm">
+                                            <i class="fas fa-sign-out-alt text-muted wow bounce"><a type="buttom" href="../index.xhtml" class="btn btn-warning"
+                                            data-toggle="tooltip" data-placement="bottom" title="volver a la pagina principal">Volver a la pagina inicial</a></i>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </f:view>
+                        <!-- registro prueba -->  
+                    </div>
+                </div>
+            </div>
+            <!-- fin contenido -->
+            <footer class="footer">
+                <div class="container">
+                    <nav>
+                        <ul class="footer-menu">
+                            <li>
+                                <a href="#">
+                                    #{dashES.foot} 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    #{dashES.foot1}
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="copyright text-center">
+                            #{dashES.foot2}
+                        </p>
+                    </nav>
+                </div>
+            </footer>
+            <!--   Core JS Files   -->
+            <script src="../resourses/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+            <script src="../resourses/js/popper.min.js" type="text/javascript"></script>
+            <script src="../resourses/js/bootstrap.min.js" type="text/javascript"></script>
+            <!--  Notifications y animation Plugin    -->
+
+            <script src="../resourses/js/plugins/wow.min.js" type="text/javascript"></script>
+            <script src="../resourses/js/plugins/owl.carousel.min.js" type="text/javascript"></script>
+            <script src="../resourses/js/plugins/sweetalert2.min.js" type="text/javascript"></script>
+            <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+            <script src="../resourses/js/light-bootstrap-dashboard.js" type="text/javascript"></script>
+            <script src="../resourses/js/plugins/validator.js" type="text/javascript"></script>
+
+        </f:view>
+    </h:body>
+</html>
+
+
+
+
+
+

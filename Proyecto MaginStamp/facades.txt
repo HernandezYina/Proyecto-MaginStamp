@@ -1,0 +1,168 @@
+USUARIO
+////////////////////////////
+public Usuario iniciarsesion(Usuario usuariolog) {
+         Usuario usuario = null; 
+          
+        try {
+            
+            Query query = em.createQuery("select u from Usuario u where u.email=:email and u.clave=:clave");
+            query.setParameter("email",usuariolog.getEmail());
+            query.setParameter("clave",usuariolog.getClave());
+            
+            List<Usuario> lista  = query.getResultList();
+            if(!lista.isEmpty()){
+                usuario = lista.get(0);
+            }
+            
+        } catch (Exception e) {
+            throw e;
+            
+        }finally{
+        //em.close();
+        }
+        return usuario;   
+    }
+    
+     public String cargaDatos(String archivo, String tabla){
+        Query query=em.createNativeQuery("LOAD DATA LOCAL INFILE '"+archivo+"' REPLACE INTO TABLE "+tabla+" FIELDS TERMINATED BY ';' "
+                + "ENCLOSED BY '\"' ESCAPED BY '\\\\' LINES TERMINATED BY '\\r\\n'");
+        
+        int resultado=query.executeUpdate();
+        String mensaje=resultado+ "filas afectadas";
+        return mensaje;
+    }
+         
+        public List<Object[]> reporteEstadosActivos() {
+        System.out.println("Hola");
+        Query Sql = em.createNativeQuery("SELECT estado, count(*) AS estados from Usuario \n"
+                + "group by estado");
+        List<Object[]> lista = Sql.getResultList();
+        for (Object[] lista1 : lista) {
+            System.out.println("Resultado "+lista1[0].toString());
+            String a=lista1[1].toString();
+            System.out.println(a);
+            System.out.println("Cantidad"+a.substring(0,a.length()-2)); // para que funcionara con nuestra variable string y quitara los decimales
+        }
+return lista; 
+    }
+
+///////////////
+pedidodetalle
+////////////////////
+
+
+public List<Object[]> reporteCantidadDisenio() {
+        System.out.println("Hola");
+        Query Sql = em.createNativeQuery("SELECT  idDisenioMagin, Sum(cantidad) AS Cantidad from PedidoDetalle\n"
+                + "group by idDisenioMagin  order by Sum(cantidad) desc");
+        List<Object[]> lista = Sql.getResultList();
+        for (Object[] lista1 : lista) {
+            System.out.println("Resultado "+lista1[0].toString());
+            String a=lista1[1].toString();
+            System.out.println(a);
+            System.out.println("Cantidad"+a.substring(0,a.length()-2)); // para que funcionara con nuestra variable string y quitara los decimales
+        }
+return lista; 
+    }
+
+
+//////////////
+COTIZACION
+///////////////
+
+public String cargaDatos(String archivo, String tabla){
+        Query query=em.createNativeQuery("LOAD DATA LOCAL INFILE '"+archivo+"' REPLACE INTO TABLE "+tabla+" FIELDS TERMINATED BY ';' "
+                + "ENCLOSED BY '\"' ESCAPED BY '\\\\' LINES TERMINATED BY '\\r\\n'");
+        
+        int resultado=query.executeUpdate();
+        String mensaje=resultado+ "filas afectadas";
+        return mensaje;
+    }
+
+/////////////
+FACTURA
+//////////////
+
+public List<Object[]> calcularTotal() {
+        Query query = em.createNativeQuery("");
+        //List<Object[]>  result=em.createQuery("SELECT p.idProducto,p.producto,(p.cantidad*p.precio) as Total  FROM  Producto p").getResultList();
+        List<Object[]> result = query.getResultList();
+        /*for(Object[] object : result) {
+            System.out.println("Codigo: "+object[0]+ ", Nombre: "+object[1]+ ", Total: "+object[2]);
+        }*/
+        return result;
+    }
+
+//////////////
+PROVEEDOR
+////////////
+
+public String cargaDatos(String archivo, String tabla){
+        Query query=em.createNativeQuery("LOAD DATA LOCAL INFILE '"+archivo+"' REPLACE INTO TABLE "+tabla+" FIELDS TERMINATED BY ';' "
+                + "ENCLOSED BY '\"' ESCAPED BY '\\\\' LINES TERMINATED BY '\\r\\n'");
+        
+        int resultado=query.executeUpdate();
+        String mensaje=resultado+ "filas afectadas";
+        return mensaje;
+    }
+
+
+
+
+
+///////////////////////////
+
+-Correo masivo
+-Metodo responder
+-fecha
+-factura
+-reportes pdf
+-settear usuario
+
+///////////////////////////
+<div class="row">
+                                                        <div class="col-sm">
+                                                            <div class="form-group">
+                                                                <h:outputLabel value="#{dashES.tablapedido4}" for="Talla" />
+                                                                <h:selectOneMenu class="form-control" value = "#{carritoControlador.talla}">
+                                                                    <f:selectItem itemLabel = "S" itemValue = "S" ></f:selectItem>      
+                                                                    <f:selectItem itemLabel = "M" itemValue = "M" ></f:selectItem>      
+                                                                    <f:selectItem itemLabel = "L" itemValue = "L" ></f:selectItem>   
+                                                                    <f:selectItem itemLabel = "XL" itemValue = "XL" ></f:selectItem>      
+                                                                </h:selectOneMenu>
+                                                            </div> 
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <div class="form-group">
+                                                                <h:outputLabel value="#{dashES.tablapedido5}" for="Genero" />
+                                                                <h:selectOneMenu class="form-control" value="#{carritoControlador.genero}">
+                                                                    <f:selectItem itemLabel="#{dashES.select}" itemValue="Dama" ></f:selectItem>      
+                                                                    <f:selectItem itemLabel="#{dashES.select1}" itemValue="Caballero" ></f:selectItem>      
+                                                                    <f:selectItem itemLabel="#{dashES.select2}" itemValue="Niño" ></f:selectItem>   
+                                                                    <f:selectItem itemLabel="#{dashES.select3}" itemValue="Niña" ></f:selectItem>      
+                                                                </h:selectOneMenu>
+                                                            </div>
+                                                        </div>
+
+
+
+
+
+        <f:event type="preRenderView" listener="#{indexControlador.validarSesion()}"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

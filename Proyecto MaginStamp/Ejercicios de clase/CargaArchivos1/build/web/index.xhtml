@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head />
+    <h:body>
+        <h1><h:outputText value="Cargar Soportes"/></h1>
+        <h:form enctype="multipart/form-data">
+            <h:panelGrid columns="2">
+                <label  style="margin-top: 10px;" for="EmpleadoidEmpleado">Seleccione el empleado: </label>
+                <h:selectOneMenu id="empleadoidEmpleado" value="#{soportesControlador.empleado.idEmpleado}"  title="EmpleadoidEmpleado" required="true" requiredMessage="The EmpleadoidEmpleado field is required.">
+                    <!-- TODO: update below reference to list of available items-->
+                    <f:selectItem itemLabel="Seleccione la raza" itemValue="0">
+                    </f:selectItem>
+                    <f:selectItems itemLabel="#{empleado.nombre}" itemValue="#{empleado.idEmpleado}" value="#{empleadoControlador.listaEmpleado}" var="empleado">
+                    </f:selectItems>
+                </h:selectOneMenu>
+                <label style="margin-top: 24px;" for="cedula">Adjunte archivo cedula: </label>
+                <h:inputFile value="#{soportesControlador.file}" style="margin-right: 24px;"/>
+                 <label style="margin-top: 24px;" for="diploma">Adjunte archivo diploma pregrado: </label>
+                <h:inputFile value="#{soportesControlador.file2}" style="margin-right: 24px;"/>
+                 <label style="margin-top: 24px;" for="xp1">Adjunte archivo experiencia #1: </label>
+                <h:inputFile value="#{soportesControlador.file3}" style="margin-right: 24px;"/>
+                 <label style="margin-top: 24px;" for="xp2">Adjunte archivo experiencia #2: </label>
+                <h:inputFile value="#{soportesControlador.file4}" style="margin-right: 24px;"/>
+                <h:commandButton style="margin-top: 10px; " id="Guardar" value="Registrar" action="DescargaArchivos" actionListener="#{soportesControlador.registrar()}"></h:commandButton>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

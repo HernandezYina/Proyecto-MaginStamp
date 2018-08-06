@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Pacifico|Roboto+Condensed" rel="stylesheet"/>
+        <!-- CSS Files -->
+        <link href="../../resourses/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resourses/css/light-bootstrap-dashboard.css" rel="stylesheet" type="text/css"/>
+        <title>Editar Inventario</title>
+    </h:head>
+    <h:body>
+        <div class="wrapper">
+            <div class="sidebar" data-image="../../resourses/img/sidebar-5.jpg" data-color="blue">
+                <!--
+            Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+            Tip 2: you can also add an image using data-image tag
+                -->
+                <div class="sidebar-wrapper">
+                    <div class="logo especial">
+                        <a href="" class="simple-text">
+                            Magin Stamp
+                        </a>
+                    </div>
+                    <ul class="nav mt-5">
+                        <li>
+                            <a class="nav-link active my-auto" href="">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <p>Editando Inventario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item disabled active-pro">
+                            <a class="nav-link disabled" href="">
+                                <i class="nc-icon nc-alien-33"></i>
+                                <p>Bienvenido</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="main-panel">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg" color-on-scroll="500">
+                    <div class=" container-fluid  ">
+                        <a class="navbar-brand" href="#"> Admin dashboard </a>
+                        <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span><i class="fas fa-chevron-circle-down"></i></span> 
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                            <ul class="nav navbar-nav mr-auto">
+
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="registroInventario.xhtml">
+                                        <span class="no-icon">Volver</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+                <!-- contenido -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="section">
+                            <!-- amor pega los formularios y tablas aqui... -->
+                            <f:view>
+                                <div class="container">
+                                    <div class="container col-6 ">
+
+                                        <h:form>
+                                            <h1><h:outputText value="Actualizar Inventario"/></h1>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="idReferencia" class="control-label">Referencia</label>
+                                                    <h:selectOneMenu class="form-control" id="idReferencia" value="#{inventarioControlador.referencia.idReferencia}" title="IdReferencia" required="true" requiredMessage="The IdReferencia field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <div class="form-group">
+                                                            <f:selectItem itemLabel="Referencia" itemValue="0"></f:selectItem>
+                                                            <f:selectItems value="#{referenciaControlador.listaReferencia}" var="referencia" itemValue="#{referencia.idReferencia}" itemLabel="#{referencia.referencia}"/>
+                                                        </div>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="entradas" class="control-label">Entradas</label>
+                                                    <h:inputText class="form-control" id="entradas" value="#{inventarioControlador.inventario.entradas}" title="Entradas" required="true" requiredMessage="The Entradas field is required."/>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="salidas" class="control-label">Salidas</label>
+                                                    <h:inputText class="form-control" id="salidas" value="#{inventarioControlador.inventario.salidas}" title="Salidas" required="true" requiredMessage="The Salidas field is required."/>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="existencias" class="control-label">Existencias</label>
+                                                    <h:inputText class="form-control" id="existencias" value="#{inventarioControlador.inventario.existencias}" title="Existencias" required="true" requiredMessage="The Existencias field is required."/>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="precio" class="control-label">Precio</label>
+                                                    <h:inputText class="form-control" id="precio" value="#{inventarioControlador.inventario.precio}" title="Precio" required="true" requiredMessage="The Precio field is required."/>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="fechaInventario" class="control-label">Fecha</label>
+                                                    <h:inputText class="form-control" id="fechaInventario" value="#{inventarioControlador.inventario.fechaInventario}" title="FechaInventario" required="true" requiredMessage="The FechaInventario field is required.">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </h:inputText>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="idProveedor" class="control-label">Proveedor</label>
+                                                    <h:selectOneMenu class="form-control" id="idProveedor" value="#{inventarioControlador.proveedor.idProveedor}" title="IdProveedor" required="true" requiredMessage="The IdProveedor field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <div class="form-group">
+                                                            <f:selectItem itemLabel="Proveedor" itemValue="0"></f:selectItem>
+                                                            <f:selectItems value="#{proveedorControlador.listaProveedor}" var="proveedor" itemValue="#{proveedor.idProveedor}" itemLabel="#{proveedor.nombres}"/>
+                                                        </div>
+                                                    </h:selectOneMenu>
+                                                </div>
+
+                                                <h:commandButton class="btn btn-info" value="Guardar" action="#{inventarioControlador.edit()}"></h:commandButton>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </f:view>
+                        </div>
+                    </div>
+                </div>
+                <!-- fin contenido -->
+                <footer class="footer">
+                    <div class="container">
+                        <nav>
+                            <ul class="footer-menu">
+                                <li>
+                                    <a href="#">
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Ayuda
+                                    </a>
+                                </li>
+                            </ul>
+                            <p class="copyright text-center">
+                                ©
+                                made with love
+                            </p>
+                        </nav>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+
+
+
+
+        <!--   Core JS Files   -->
+        <script src="../../resourses/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+        <script src="../../resourses/js/popper.min.js" type="text/javascript"></script>
+        <script src="../../resourses/js/bootstrap.min.js" type="text/javascript"></script>
+        <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+        <script src="../../resourses/js/plugins/bootstrap-switch.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="../../resourses/js/plugins/bootstrap-notify.js"></script>
+        <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+        <script src="../../resourses/js/light-bootstrap-dashboard.js" type="text/javascript"></script>   
+    </h:body>
+</html>
+

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Descarga de archivos</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="lista de los soportes"/></h1>
+                <h:dataTable value="#{soportesControlador.listaSoportes}" var="soporte">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Idsoportes"/>
+                        </f:facet>
+                        <h:outputText value="#{soporte.idsoportes}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cedula"/>
+                        </f:facet>
+                        <a href="#{soporte.cedula}">Cedula</a>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DiplomaPregrado"/>
+                        </f:facet>
+                        <a href="#{soporte.diplomaPregrado}">Diploma</a>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Experiencia1"/>
+                        </f:facet>
+                        <a href="#{soporte.experiencia1}">Experiencia #1</a>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Experiencia2"/>
+                        </f:facet>
+                        <a href="#{soporte.experiencia2}">Experiencia #2</a>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="EmpleadoidEmpleado"/>
+                        </f:facet>
+                        <h:outputText value="#{soporte.empleadoidEmpleado.nombre}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

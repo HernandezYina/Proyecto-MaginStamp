@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d36d9143-2f39-44e3-9e35-6356f7736456">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from Cotizacion;]]>
+	</queryString>
+	<field name="idCotizacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="detalles" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="disenioCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="128" splitType="Stretch">
+			<image>
+				<reportElement x="47" y="0" width="128" height="123" uuid="ea73479b-cf1e-447d-9288-e6718bd07ef6"/>
+				<imageExpression><![CDATA["C:\\Users\\User\\OneDrive\\PROYECTO (1)\\PROYECTOMS2.0\\web\\resourses\\img\\favi.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="216" y="24" width="249" height="48" uuid="1d2b1a2b-d6f0-4abf-8fbb-e9cb964762fe"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Lista de Cotizaciones]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="282" y="84" width="100" height="20" uuid="dab95b57-fa14-4af6-81e4-caca844a38ec"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="64" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-21" y="-217" width="596" height="25" backcolor="#6699FF" uuid="bf532654-3e96-4cfb-ac5a-971fc0df0ef1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="21" y="0" width="47" height="20" uuid="62d8e5d4-c8ef-463a-b691-14454e0f65bf"/>
+				<text><![CDATA[idCotizacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="0" width="66" height="20" uuid="e31812ff-1d16-442f-83e5-9b948298d882"/>
+				<text><![CDATA[nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="0" width="68" height="20" uuid="d2b8791d-3927-4a2a-9602-36b4f91be15d"/>
+				<text><![CDATA[apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="0" width="100" height="20" uuid="d9589b29-7f37-4f16-9f94-5685c649373c"/>
+				<text><![CDATA[email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="0" width="61" height="20" uuid="5536daf3-3ea5-46f9-80c1-57d2ea13a63b"/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="0" width="55" height="20" uuid="4169beb6-6be9-4099-b283-eaa429476200"/>
+				<text><![CDATA[cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="0" width="47" height="20" uuid="16bf6afd-6e12-4102-af8f-799966d1387d"/>
+				<textFieldExpression><![CDATA[$F{idCotizacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="0" width="66" height="20" uuid="28b850c9-98da-47e2-86e8-1ad659d1dcaf"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="0" width="68" height="20" uuid="987b32b5-a086-4f7d-bc16-cebaab04d5b7"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="0" width="100" height="20" uuid="afdf181c-a01b-4d19-878f-3a2f569d3f64"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="61" height="20" uuid="000eec06-e66a-49f8-a28e-52366d8d5458"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="0" width="55" height="20" uuid="4410615a-0c9d-420b-8b00-c2838db5bffe"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

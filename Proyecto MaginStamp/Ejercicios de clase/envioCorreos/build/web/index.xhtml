@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Enviar correos"/></h1>
+                <h:panelGrid columns="2">                  
+                    <h:outputLabel value="Correo:" for="correo" />
+                    <h:inputText id="correo" value="#{mensajeControlador.mensaje.correo}" title="Correo" />
+                    <h:outputLabel value="Clave:" />
+                    <h:inputSecret  id="Clave" value="#{mensajeControlador.clave}" title="Clave" required="true" requiredMessage="The clave field is required."/> 
+                    <h:outputLabel value="Destinatario:" for="idEmpleado" />
+                    <h:selectOneMenu id="idEmpleado" value="#{mensajeControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItem itemLabel="Empleado" itemValue="0"></f:selectItem>
+                        <f:selectItems value="#{empleadoControlador.listaEmpleado}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.mail}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Asunto:" for="asunto" />
+                    <h:inputText id="asunto" value="#{mensajeControlador.mensaje.asunto}" title="Asunto" />
+                    <h:outputLabel value="Mensaje:" for="mensaje" />
+                    <h:inputTextarea id="mensaje" value="#{mensajeControlador.mensaje.mensaje}" title="Mensaje" />
+                    
+                </h:panelGrid>
+                <h:commandButton class="btn btn-info" value="Enviar" action="#{mensajeControlador.create()}"></h:commandButton>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

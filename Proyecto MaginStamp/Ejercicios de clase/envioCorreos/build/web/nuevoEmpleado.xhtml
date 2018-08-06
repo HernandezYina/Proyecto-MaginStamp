@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdEmpleado:" for="idEmpleado" />
+                    <h:inputText id="idEmpleado" value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
+                    <h:outputLabel value="NumeroDocumento:" for="numeroDocumento" />
+                    <h:inputText id="numeroDocumento" value="#{empleadoControlador.empleado.numeroDocumento}" title="NumeroDocumento" />
+                    <h:outputLabel value="Nombres:" for="nombres" />
+                    <h:inputText id="nombres" value="#{empleadoControlador.empleado.nombres}" title="Nombres" />
+                    <h:outputLabel value="Apellidos:" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{empleadoControlador.empleado.apellidos}" title="Apellidos" />
+                    <h:outputLabel value="Mail:" for="mail" />
+                    <h:inputText id="mail" value="#{empleadoControlador.empleado.mail}" title="Mail" />
+                    <h:outputLabel value="Telefono:" for="telefono" />
+                    <h:inputText id="telefono" value="#{empleadoControlador.empleado.telefono}" title="Telefono" />
+                </h:panelGrid>
+                <h:commandButton class="btn btn-info" value="Enviar" action="#{empleadoControlador.create()}"></h:commandButton>
+            </h:form>
+
+        </f:view>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h:commandButton  actionListener="#{reporteControlador.PDF}" value="Reporte PDF"></h:commandButton>
+                <h:commandButton actionListener="#{reporteControlador.PDFJPQL}" value="Reporte JPQL"/>                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{reporteControlador.listaProdructo}" var="prod">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdProducto"/>
+                        </f:facet>
+                        <h:outputText value="#{prod.idProducto}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Producto"/>
+                        </f:facet>
+                        <h:outputText value="#{prod.producto}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cantidad"/>
+                        </f:facet>
+                        <h:outputText value="#{prod.cantidad}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Precio"/>
+                        </f:facet>
+                        <h:outputText value="#{prod.precio}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+            <h:form>
+                <h:commandButton action="#{reporteControlador.listaFinal()}" value="probar"/>
+                
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

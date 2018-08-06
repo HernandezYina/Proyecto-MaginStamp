@@ -1,0 +1,513 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
+        <link rel="icon" type="image/png" href="resourses/img/favicon.png"/>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Roboto" rel="stylesheet"/>
+
+        <link href="resourses/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resourses/css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resourses/css/animate.css" rel="stylesheet" type="text/css"/>
+        <link href="resourses/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="resourses/css/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+        <title>MaginStamp</title>
+    </h:head>
+    <h:body>
+        <f:view locale="#{lenguajeControlador.languageSelected}">
+            <!-- nav -->
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top header-nav encabezado" id="encabezado">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-2">
+                        <li class="nav-item">
+                            <a class="nav-link mr-5 navbar-brand active" href="index.xhtml">
+                                <img src="resourses/img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""/>MaginStamp
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mx-2">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-users mx-2"></i>#{propES.menu1}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item"  href="#nosotros">#{propES.menu2}</a>
+                                <a class="dropdown-item"  href="#nosotros">#{propES.menu3}</a>
+                                <a class="dropdown-item"  href="#nosotros">#{propES.menu4}</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active" data-toggle="tooltip" title="#{propES.menu5}" data-placement="bottom"  href="#contacto">
+                                <i class="fas fa-comments mx-2"></i>#{propES.menu5}</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active" data-toggle="tooltip" title="#{propES.menu6}" data-placement="bottom" href="Client/Registro.xhtml">
+                                <i class="fas fa-registered mx-2"></i>#{propES.menu6}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav ml-auto">
+                    <ul class="navbar-nav mx-2">
+                        <li>
+                            <h:form>
+                                <div class="btn-group" data-toggle="tooltip" title="#{propES.idioma}" data-placement="left">
+                                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        #{propES.idioma} <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <c:forEach items="#{lenguajeControlador.supportLanguages}" var="l">
+                                            <li>
+                                                <h:commandLink  value="#{propES[l.displayLanguage]}" action="#{lenguajeControlador.cambiarIdioma(l)}" class="p-4">
+                                                    <img class="dropdown-item img-fluid" src="#{request.contextPath}/resourses/img/languajes/#{l.language}.png" alt="#{propES[l.displayLanguage]}"/>
+                                                </h:commandLink>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </h:form> 
+                        </li>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">#{propES.menu7} 
+                            <i class="fas fa-user-circle mx-2"></i>
+                        </button>
+                    </ul>
+                </div>
+            </nav>
+            <!-- nav -->
+            <!-- Modal login-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title p-2" id="exampleModalLabel">#{propES.login}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- aqui va el formulario de el login -->
+                            <div class="container">
+                                <h:form pt:class="needs-validation" pt:novalidate="">
+                                    <h:messages/>
+                                    <div class="form-group">
+                                        <label for="email" class="control-label">#{propES.login1}</label>
+                                        <h:inputText class="form-control" value="#{indexControlador.usuario.email}" pt:required="" pt:type="email" 
+                                                     pt:placeholder="#{propES.valid}" pt:pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+                                        <div class="invalid-feedback">
+                                            #{propES.valid}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Clave" class="control-label">#{propES.login2}</label>
+                                        <h:inputSecret  class="form-control " value="#{indexControlador.usuario.clave}" pt:required="" pt:placeholder="#{propES.valid1}"
+                                                        pt:type="password" pt:minlength="7" pt:maxlength="15"/>
+                                        <div class="invalid-feedback">
+                                            #{propES.valid1}
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
+                                        <label class="form-check-label" for="exampleCheck1">#{propES.valid2}</label>
+                                    </div>
+                                    <br/>
+                                    <h:commandButton pt:type="submit" class="btn btn-info mb-2" value="#{propES.login3}" action="#{indexControlador.iniciarsesion()}"/>         
+                                </h:form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" data-dismiss="modal">#{propES.login4}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal login-->
+            <!-- header -->
+            <div class="header-filtro" data-parallax="true" style="background-image:url(resourses/img/header.png);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm mx-auto">
+                            <div class="text-white">
+                                <div class="container text-center wow bounceInUp">
+                                    <img src="resourses/img/logo.svg" alt="" class="img-fluid mt-5 wow pulse" data-wow-duration="3s" data-wow-iteration="infinite" style="width: 500px"/>
+                                </div>
+                                <div class="container">
+                                    <h1 class="mt-5 my-3">#{propES.header}</h1>
+                                    <h3 class="mb-5 text-center">#{propES.header1}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- header -->
+            <!-- main -->
+            <div class="main main-raised mb-5">
+                <div class="section container">
+                    <div class="text-center p-3">
+                        <h2 class="mb-5 mt-5">
+                            <strong>#{propES.header2}</strong>
+                        </h2>
+                    </div>
+                    <div class="card-deck text-center">
+                        <div class="card border-light py-3 wow bounceInUp" data-wow-delay=".3s">
+                            <img class="card-img-top mx-auto img-fluid zoom" src="resourses/img/cotizar.svg" style="width:8rem"/>
+                            <div class="card-body">
+                                <h5 class="card-title my-3">#{propES.header3}</h5>
+                                <p class="card-text">#{propES.header4}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">#{propES.header5}</small>
+                            </div>
+                        </div>
+
+                        <div class="card border-light py-3 wow bounceInUp" data-wow-delay=".5s">
+                            <img class="card-img-top mx-auto img-fluid zoom" src="resourses/img/enviar.svg" style="width:8rem"/>
+                            <div class="card-body">
+                                <h5 class="card-title my-3">#{propES.header6}</h5>
+                                <p class="card-text">#{propES.header7}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">#{propES.header8}</small>
+                            </div>
+                        </div>
+                        <div class="card  border-light py-3 wow bounceInUp" data-wow-delay=".8s">
+                            <img class="card-img-top mx-auto img-fluid zoom" src="resourses/img/estampar.svg" style="width:8rem"/>
+                            <div class="card-body">
+                                <h5 class="card-title my-3">#{propES.header9}</h5>
+                                <p class="card-text">#{propES.header10}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">#{propES.header11}</small>
+                            </div>
+                        </div>
+
+                        <div class="card border-light py-3 wow bounceInUp" data-wow-delay="1.3s">
+                            <img class="card-img-top mx-auto img-fluid zoom" src="resourses/img/recibe.svg" style="width:8rem"/>
+                            <div class="card-body">
+                                <h5 class="card-title my-3">#{propES.header12}</h5>
+                                <p class="card-text">#{propES.header13}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">#{propES.header14}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- main -->
+            <!-- main -->
+            <div class="container-fluid text-center my-5">
+                <h1><strong>#{propES.tecnica}</strong></h1>
+            </div>
+            <div class="container text-center mb-5">
+                <div class="row">
+                    <div class="col-sm p-3">
+                        <img src="resourses/img/sublim.png" style="width:8rem" class="img-fluid wow bounceInLeft" alt=""/>
+                    </div>
+                    <div class="col-sm my-auto">
+                        <h4 class="text-xs-center font-weight-bold">#{propES.tecnica1}</h4>
+                        <p>#{propES.tecnica2}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm my-auto">
+                        <h4 class="text-xs-center font-weight-bold">#{propES.tecnica3}</h4>
+                        <p>#{propES.tecnica4}</p>
+                    </div>
+                    <div class="col-sm p-3">
+                        <img src="resourses/img/serigraf.png" style="width:8rem" class="img-fluid wow bounceInRight" alt=""/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm p-3">
+                        <img src="resourses/img/vinyl.png" style="width:8rem" class="img-fluid wow bounceInLeft" alt=""/>
+                    </div>
+                    <div class="col-sm my-auto">
+                        <h4 class="text-xs-center font-weight-bold">#{propES.tecnica5}</h4>
+                        <p>#{propES.tecnica6}</p>
+                    </div>
+                </div>
+                <div class="row my-auto">
+                    <div class="col-sm my-auto">
+                        <h4 class="text-xs-center font-weight-bold">#{propES.tecnica7}</h4>
+                        <p>#{propES.tecnica8}</p>
+                    </div>
+                    <div class="col-sm p-3">
+                        <img src="resourses/img/transfer.png" style="width:8rem" class="img-fluid wow bounceInRight" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <!-- main -->
+            <div class="main main-raised">
+                <div class="section container">
+                    <div class="container py-5">
+                        <h2 class="mb-5 text-center font-weight-bold">#{propES.productos}</h2>
+                        <p>#{propES.productos1}</p>
+                    </div>
+                    <div class="row ">
+                        <!-- carrousel -->
+                        <div class="col-sm col-md-8">
+                            <h2 class="text-xs-center font-weight-bold">Últimos diseños</h2>
+                            <div class="owl-carousel mx-auto">
+                                <a href="#1">
+                                    <h4>Camiseta 1</h4>
+                                    <img src="resourses/img/1.png" alt="Camiseta 1"/>
+                                </a>
+
+                                <a href="#1">
+                                    <h4>Camiseta 2</h4>
+                                    <img src="resourses/img/2.png" alt="Camiseta 2"/>
+                                </a>
+
+                                <a href="#1">
+                                    <h4>Camiseta 3</h4>
+                                    <img src="resourses/img/3.png" alt="Camiseta 3"/>
+                                </a>
+
+                                <a href="#1">
+                                    <h4>Camiseta 4</h4>
+                                    <img src="resourses/img/4.png" alt="Camiseta 4"/>
+                                </a>
+
+                                <a href="#1">
+                                    <h4>Camiseta 5</h4>
+                                    <img src="resourses/img/5.png" alt="Camiseta 5"/>
+                                </a>
+
+                                <a href="#1">
+                                    <h4>Camiseta 6</h4>
+                                    <img src="resourses/img/6.png" alt="Camiseta 6"/>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- carrousel -->
+                        <!-- imagen -->
+                        <div class="col-sm col-md-4 text-center wow bounceIn">
+                            <img src="resourses/img/chico.svg" class="img-fluid wow tada" style="width: 13rem;"
+                                 data-wow-duration="4s" data-wow-iteration="infinite"/>
+                        </div>
+                        <!-- imagen -->
+                    </div>
+                </div>
+                <!-- cotizacion -->
+                <div class="container wow bounceInUp text-white p-3 bg-info col-md-8 col-sm" data-wow-delay=".3s">
+                    <!-- aqui va el formulario de cotizacion -->
+                    <f:view>
+                        <h:form enctype="multipart/form-data" pt:id="contacto" class="needs-validation mb-5" pt:novalidate="">
+                            <h3><strong><h:outputText class="text-center" value="#{propES.contacto}"/></strong></h3>
+                            <br></br>
+                            <div class="row">
+                                <div class="form-group col-sm">
+                                    <label for="nombres" class="control-label">#{propES.contacto5}</label>
+                                    <h:inputText class="form-control" id="nombres" value="#{cotizacionControlador.cotizacion.nombres}" pt:required="" pt:type="text"
+                                                 pt:minlength="5" pt:maxlength="43" pt:placeholder="#{propES.valid3}"/>
+                                    <div class="invalid-feedback">
+                                        #{propES.valid3}
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="apellidos" class="control-label">#{propES.contacto6}</label>
+                                    <h:inputText class="form-control" id="apellidos" value="#{cotizacionControlador.cotizacion.apellidos}" title="Apellidos" pt:required="" pt:type="text"
+                                                 pt:minlength="5" pt:maxlength="43" pt:placeholder="#{propES.valid4}"/>
+                                    <div class="invalid-feedback">
+                                        #{propES.valid4}
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm">
+                                    <label for="email" class="control-label">#{propES.contacto1}</label>
+                                    <h:inputText class="form-control" id="email" value="#{cotizacionControlador.cotizacion.email}" pt:required="" pt:type="email"
+                                                 pt:pattern="[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+" pt:placeholder="#{propES.valid5}"/>
+                                    <div class="invalid-feedback">
+                                        #{propES.valid5}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-4">
+                                <div class="form-group col-sm"></div>
+                                <div class="form-group col-sm col-md-2">
+                                    <label for="cantidad" class="control-label">#{propES.contacto7}</label>
+                                    <h:inputText class="form-control" id="cantidad" value="#{cotizacionControlador.cotizacion.cantidad}" pt:required="" pt:type="number"
+                                                 pt:min="1" pt:max="8000" pt:placeholder="#{propES.valid6}"/>
+                                    <div class="invalid-feedback">
+                                        #{propES.valid6} 
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm text-center">
+                                    <label for="disenioCliente" class="control-label">#{propES.contacto8}</label>
+                                    <div class="subida mx-auto">
+                                        <h:inputFile class="disenioCliente"  value="#{cotizacionControlador.file}" pt:data-toggle="tooltip" pt:data-placement="bottom" pt:title="#{propES.contacto8}"/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm"></div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm">
+                                    <label for="detalles" class="control-label">#{propES.contacto3}</label>
+                                    <h:inputTextarea class="form-control" id="detalles" value="#{cotizacionControlador.cotizacion.detalles}" pt:required="" pt:type="textarea"/>
+                                    <div class="invalid-feedback" pt:maxlength="200">
+                                        #{propES.valid7}
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="container mx-auto text-center" style="width: 100px">
+                                <div>
+                                    <h:commandButton pt:type="submit" class="btn btn-warning wow bounce" value="#{propES.contacto4}" action="#{cotizacionControlador.create()}"
+                                                     pt:data-toggle="tooltip" pt:data-placement="bottom" pt:title="#{propES.contacto4}" pt:id="cotizar"/>
+                                </div>
+                            </div>
+                        </h:form>
+                    </f:view>
+                </div>
+                <hr></hr>
+            </div>
+            <!-- hamburguesa -->
+            <div class="mx-auto p-4" id="nosotros">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0 text-center">
+                                <button class="btn btn-info" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    #{propES.text}
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <div class="container">
+                                    <h2 class="text-xs-center font-weight-bold">#{propES.text}</h2>
+                                    <p class="text-xs-center font-weight-bold">#{propES.text1}</p>
+                                    <p class="text-xs-center font-weight-bold">#{propES.text2}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0 text-center">
+                                    <button class="btn btn-info collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        #{propES.text3}
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h2 class="text-xs-center font-weight-bold">#{propES.text3}</h2>
+                                    <p class="text-xs-center font-weight-bold">#{propES.text4}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0 text-center">
+                                    <button class="btn btn-info collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        #{propES.text5}
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h2 class="text-xs-center font-weight-bold">#{propES.text5}</h2>
+                                    <p class="text-xs-center font-weight-bold">#{propES.text6}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Footer-->
+            <footer class="footer font-small pt-4 mt-4">
+                <div class="container text-center text-md-left">
+                    <div class="row">
+                        <!--Footer column-->
+                        <div class="col">
+                            <h5 class="mb-4 mt-3 font-weight-bold especial">#{propES.foot}</h5>
+                            <p><i class="fas fa-phone ml-4 mx-3"></i>300-000-0000</p>
+                        </div>
+                        <div class="col my-auto d-flex justify-content-center">
+                            <a href="#" class="btn btn-warning btn-rounded">#{propES.foot1}</a>
+                        </div>
+                    </div>
+                </div>
+                <hr></hr>
+                <!--registro-->
+                <div class="text-center py-3">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <h5 class="mb-1">#{propES.foot2}</h5>
+                        </li>
+                        <li class="list-inline">
+                            <a href="Client/Registro.xhtml" class="btn btn-danger wow bounce" data-wow-duration="2s">#{propES.foot3}</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--+ registro-->
+                <hr></hr>
+                <!--Social buttons-->
+                <div class="footer-copyright p-3 text-center bg-info">
+                    <div class="text-center text-white">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a class="btn-floating  mx-1">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating  mx-1">
+                                    <i class="fab fa-twitter-square"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating  mx-1">
+                                    <i class="fab fa-google-plus-square"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating  mx-1">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating  mx-1">
+                                    <i class="fab fa-dribbble-square"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.Social buttons-->
+                    <!--Copyright-->
+                    <a><p class="text-white">#{propES.foot4}<i class="fas fa-heart wow pulse" data-wow-duration=".3s" data-wow-iteration="infinite"></i></p>
+                    </a>
+                </div>
+                <!--/.Copyright-->
+            </footer>
+            <a class="ir-arriba" href="#"><i class="fa  fa-arrow-circle-up wow flip" data-wow-duration="3s" data-wow-iteration="infinite" aria-hidden="true"></i> </a>
+            <!--fin Footer-->
+            <!-- main -->
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="resourses/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+            <script src="resourses/js/popper.min.js" type="text/javascript"></script>
+            <script src="resourses/js/bootstrap.min.js" type="text/javascript"></script>
+            <!-- js plugins -->
+            <script src="resourses/js/plugins/wow.min.js" type="text/javascript"></script>
+            <script src="resourses/js/plugins/owl.carousel.min.js" type="text/javascript"></script>
+            <!-- js script -->
+            <script src="resourses/js/plugins/validator.js" type="text/javascript"></script>
+            <script src="resourses/js/plugins/sweetalert2.min.js" type="text/javascript"></script>
+        </f:view>
+    </h:body>
+</html>
+

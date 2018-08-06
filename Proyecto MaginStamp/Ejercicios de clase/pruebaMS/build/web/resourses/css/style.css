@@ -1,0 +1,87 @@
+
+
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: lightcyan; 
+}
+section {
+    display: block;
+}
+.especial{
+    font-family: 'Pacifico', cursive;
+}
+
+.header-filtro{
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 50px;
+    z-index: 2;  
+}
+.header-nav{
+    font-size: 1em;
+    padding: 15px;
+}
+li:hover{
+    background: rgba(255,255,255,0.5);
+    transition: 0.5s;
+    padding: 3px;
+}
+.logo{
+    margin: auto;
+    padding: 50px;
+}
+
+.zoom {
+    transition: transform 1s;
+}
+.zoom:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px 0px rgb(101, 133, 238);
+}
+.main {
+    background: #FFFFFF;
+    position: relative;
+    z-index: 3;
+}
+.main-raised {
+    margin: -60px 30px 0px;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.bg-dark{
+    transition: 1s;
+}
+
+#myCarousel .list-inline {
+    white-space:nowrap;
+    overflow-x:auto;
+    z-index: 6;
+    margin: auto;
+}
+
+#myCarousel .carousel-indicators {
+    position: static;
+    left: initial;
+    width: initial;
+    margin-left: initial;
+}
+
+#myCarousel .carousel-indicators > li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+}
+
+#myCarousel .carousel-indicators > li.active img {
+    opacity: 0.7;
+}
+.contacto{
+    background-size: cover;
+    height: 600px;
+    color:white;
+    
+}
+
+.registro{
+    margin-top: 200px;
+}

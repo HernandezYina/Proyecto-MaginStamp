@@ -1,0 +1,128 @@
+body{
+    font-family: 'Roboto', sans-serif; 
+}
+
+section {
+    display: block;
+}
+
+.especial{
+    font-family: 'Grand Hotel', cursive;
+}
+
+.header-filtro{
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 50px;
+    z-index: 3;  
+}
+
+.zoom {
+    transition: transform 1s;
+}
+
+.zoom:hover {
+    transform: scale(1.5);
+}
+
+.main {
+    background: #FFFFFF;
+    position: relative;
+    z-index: 3;
+}
+
+.main-raised {
+    margin: -60px 30px 0px;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.encabezado {
+    padding: .5rem 0;
+    -webkit-transition: all .7s ease;
+    transition: all .7s ease; }
+
+.encabezado.fondo-menu {
+    background: #00838f;
+    padding: 1rem 0; }
+
+.ir-arriba {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 3rem;
+  color: #428238;
+  text-decoration: none;
+  z-index: 99999;
+  line-height: 0;
+  display: none;
+  -webkit-transition: all .7s ease;
+          transition: all .7s ease; }
+
+.ir-arriba:hover,
+.ir-arriba:focus {
+  outline: 0;
+  text-decoration: none;
+  color: #fff; }
+
+
+.subida{
+    width: 50px;
+    height: 50px; 
+    position:relative;
+    background-image: url(../img/subir.png); 
+    background-size: cover;
+}
+
+.disenioCliente{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+
+
+.ripple:after {
+    //content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.ripple:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+
+
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 1.2rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 1.4rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 1.6rem;
+    }
+}
