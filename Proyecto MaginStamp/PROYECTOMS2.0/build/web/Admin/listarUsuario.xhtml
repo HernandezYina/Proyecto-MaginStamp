@@ -167,7 +167,6 @@
                                 <div class="container p-3">
                                     <div class="text-right">
                                         <button type="button" class="btn btn-primary mr-4" data-toggle="modal" data-target="#exampleModal">#{dashES.adicionales3}</button>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#archivosMasivos">#{dashES.adicionales}</button>
                                     </div>
                                 </div>
                                 <!-- pega los formularios y tablas aqui... -->
@@ -223,35 +222,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Modal carga de datos -->
-                    <div class="modal fade" id="archivosMasivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">#{dashES.adicionales}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h5>#{dashES.adicionales1}</h5>
-                                    <p>#{dashES.adicionales2}</p>
-                                    <hr></hr>
-                                    <h:form enctype="multipart/form-data">
-                                        <h:inputFile class="btn badge-info" value="#{usuarioControlador.file}" /> 
-                                        <br></br>
-                                        <h:commandButton class="btn btn-info" action="#{usuarioControlador.cargar()}" style="margin-top: 10px" value="#{dashES.adicionales4}">
-                                        </h:commandButton>
-                                    </h:form>
-                                </div>
-                                <hr></hr>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">#{dashES.editarperfil1}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Fin Modal -->
+                   
                     <!--Modal correos masivos-->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
